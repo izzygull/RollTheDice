@@ -1,3 +1,4 @@
+from random import seed
 import unittest
 import roll_parser
 
@@ -112,10 +113,20 @@ class TestFindSplitInd(unittest.TestCase):
     def testParens(self):
         self.assertEqual(roll_parser.find_split_ind('(4+3)*2'), ('(4+3)*2', 5))
 
+    def testLeftParens(self):
+        self.assertEqual(roll_parser.find_split_ind(
+            '2*(4+3)*2'), ('2*(4+3)*2', 7))
+
+    def testOrderOfOp(self):
+        self.assertEqual(roll_parser.find_split_ind(
+            '2+(4+3)*2'), ('2+(4+3)*2', 1))
+
 
 # TODO
-class TestCompute(unittest.TestCase):
-    pass
+class TestParse(unittest.TestCase):
+    def testMultiDiceOnly(self):
+        seed(1234)
+        self.assertEqual(roll_parser.parse('3d6'), 6)
 
 
 if __name__ == "__main__":

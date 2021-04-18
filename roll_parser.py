@@ -53,7 +53,7 @@ def create_parens_map(s):
     return s, openings_to_closings
 
 
-# Find index to split expression at
+# Find index to split expression at. Also returns the roll with extraneous parens removed
 def find_split_ind(s):
     s, openings_to_closings = create_parens_map(s)
     if openings_to_closings != {}:
@@ -86,8 +86,8 @@ def parse(s):
         if s[0] == 'd':
             return randrange(int(s[1:])) + 1
         elif 'd' in s:
-            split = s.split('d')
-            return sum([randrange(int(split[1])) + 1 for i in range(int(split[0]))])
+            num_dice, num_sides = (int(a) for a in s.split('d'))
+            return sum([randrange(num_sides) + 1 for i in range(num_dice)])
         else:
             return int(s)
     else:
