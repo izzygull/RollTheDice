@@ -13,3 +13,5 @@ Where `N` is any non-negative integer, `P` is any positive integer.
 Expressions are computed with a PMDAS order of operation (sorry, no exponentiation).
 
 Note to self: Use instructions on [this](https://discordpy.readthedocs.io/en/stable/discord.html) website to add bot.
+
+Code for a roll interpreter written in Rust is in rust-roller
