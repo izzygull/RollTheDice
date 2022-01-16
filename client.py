@@ -9,7 +9,7 @@ class RollTheDiceClient(discord.Client):
 
     async def on_message(self, message):
         print('Message from {0.author}: {0.content}'.format(message))
-        if message.author.name != self.user.name and message.content[:5] == "/rtd ":
+        if message.author.name != self.user.name and message.content.startswith("/rtd "):
             res = compute(message.content.split("/rtd ")[1])
             await message.channel.send(res)
 
